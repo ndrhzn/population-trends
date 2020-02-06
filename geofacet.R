@@ -2,7 +2,7 @@ library(ggplot2)
 library(tidyr)
 library(geofacet)
 
-df <- read.csv('~/R/28 population geofacet/population_trends.csv', stringsAsFactors = FALSE)
+df <- read.csv('data/population_trends.csv', stringsAsFactors = FALSE)
 
 df <- df %>% gather(key = type, value = ratio, -name, -year)
 df$ratio <- as.numeric(df$ratio)
