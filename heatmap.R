@@ -3,7 +3,7 @@ library(stringr)
 library(dplyr)
 library(ggplot2)
 
-df <- read.csv('population.csv', stringsAsFactors = F)
+df <- read.csv('data/population.csv', stringsAsFactors = F)
 
 # --------------------------------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ df <- df %>%
 
 # --------------------------------------------------------------------------------------------
 
-png(filename = 'rate.png', width = 1000, height = 700)
+png(filename = 'heatmap.png', width = 1000, height = 700)
   
 ggplot(df)+
   geom_tile(aes(x = year, 
@@ -41,7 +41,7 @@ ggplot(df)+
                                nbin = 24,
                                ticks = F))+
   labs(title = 'У більшості регіонів смертність\nпереважає народжуваність',
-       caption = 'Дані: Державна служба статистики | Візуалізація: Textura.in.ua')+
+       caption = 'Дані: Державна служба статистики України, 1990-2018 | Візуалізація: Textura.in.ua')+
   theme_minimal()+
   theme(text = element_text(family = 'Ubuntu Mono', size = 12, color = '#3A3F4A'),
         panel.grid = element_blank(),
