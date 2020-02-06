@@ -15,7 +15,7 @@ df <- df %>%
          region = str_replace_all(region, 'Автономна Республіка', 'АР'),
          region = trimws(region))
 
-png(filename = 'geofacet.png', width = 1200, height = 1000)
+png(filename = 'geofacet.png', width = 1000, height = 800)
 
 ggplot(df)+
   geom_hline(yintercept = 0, size = 0.3, color = '#3A3F4A')+
@@ -23,7 +23,7 @@ ggplot(df)+
   geom_line(aes(x = year, y = ratio, color = type), size = 1)+
   facet_geo(~region, grid = ukraine)+
   scale_x_continuous(breaks = seq(1990, 2015, 5), 
-                     labels = c("'90", "'95", "'00", "'05", "'10", "'15"))+
+                     labels = c("90", "95", "00", "05", "10", "15"))+
   scale_color_manual(values = c('#276419', '#c51b7d'), 
                      aesthetics = c("color", "fill"))+
   labs(title = 'Лише в Києві народжуваність переважає смертність',
@@ -34,15 +34,16 @@ ggplot(df)+
         text = element_text(family = 'Ubuntu Mono', face = 'plain', color = '#3A3F4A'),
         axis.title = element_blank(),
         axis.text = element_text(size = 12),
-        strip.text.x = element_text(color = '#3A3F4A', size = 13),
-        panel.spacing.x = unit(1.25, 'lines'),
-        panel.spacing.y = unit(1.50, 'lines'),
+        strip.text.x = element_text(color = '#3A3F4A', size = 12),
+        panel.spacing.x = unit(1.1, 'lines'),
+        panel.spacing.y = unit(1.1, 'lines'),
         panel.grid.major = element_line(size = 0.35, linetype = 'dotted', color = '#5D646F'),
         panel.grid.minor = element_blank(),
-        plot.title = element_text(face = 'bold', size = 40, margin = margin(b = 10, t = 20)),
-        plot.subtitle = element_markdown(size = 20, face = 'plain', margin = margin(b = 30)),
-        plot.caption = element_text(size = 16, margin = margin(b = 10, t = 50), color = '#5D646F'),
+        plot.title = element_text(face = 'bold', size = 36, margin = margin(b = 5, t = 20)),
+        plot.title.position = 'plot',
+        plot.subtitle = element_markdown(size = 18, face = 'plain', margin = margin(b = 10)),
+        plot.caption = element_text(size = 12, color = '#5D646F', margin = margin(t = 20)),
         plot.background = element_rect(fill = '#EFF2F4'),
-        plot.margin = unit(c(2, 2, 2, 2), 'cm'))
+        plot.margin = unit(c(1, 1, 1, 1), 'cm'))
 
 dev.off()
